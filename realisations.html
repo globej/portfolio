@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Réalisations, Sylvain, développement web sur mesure</title>
+<meta name="description" content="Liste des projets menés : contexte, rôle, période, stack et livrables. Un catalogue, pas une vitrine.">
+<meta name="theme-color" content="#EEF1EF" id="couleur-theme">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Réalisations, Sylvain, développement web sur mesure">
+<meta property="og:description" content="Liste des projets menés : contexte, rôle, période, stack et livrables.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E45'/%3E%3Cpath d='M8 16.5 L13.5 22 L24 10' fill='none' stroke='%23EEF1EF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<script>
+/* Pose le thème choisi avant le premier rendu, sinon éclair de couleur au rechargement */
+(function () {
+  try {
+    if (localStorage.getItem('portfolio-theme') === 'sombre') {
+      document.documentElement.dataset.theme = 'sombre';
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<!-- Nav dupliquée depuis index.html : si tu la modifies ici, répercuter là-bas. -->
+<div class="barre">
+  <nav class="capsule verre" id="capsule" aria-label="Navigation principale">
+    <a class="capsule__nom" href="index.html">Sylvain</a>
+    <ul class="capsule__liens">
+      <li><a href="index.html#domaines">Domaines</a></li>
+      <li><a href="index.html#offres">Offres</a></li>
+      <li><a href="index.html#engagement">Engagement</a></li>
+      <li><a href="index.html#ia">IA</a></li>
+      <li><a href="index.html#experience">Expérience</a></li>
+      <li><a href="realisations.html" aria-current="page">Réalisations</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="bascule" type="button" id="bascule-theme" aria-pressed="false">
+      <span class="bascule__icone" aria-hidden="true"></span>
+      <span class="sr-only" id="bascule-libelle">Passer en thème sombre</span>
+    </button>
+  </nav>
+</div>
+
+<header class="section" id="realisations-page" aria-labelledby="titre-realisations">
+  <div class="enveloppe">
+    <p class="surtitre">Catalogue</p>
+    <h1 class="titre-section" id="titre-realisations">Réalisations</h1>
+    <p class="these">
+      La liste tenue à jour des projets menés. Chaque fiche dit qui a fait quoi, quand, avec
+      quels outils, et ce qui a été livré. Un projet vaut mieux qu'un slogan.
+    </p>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="section" aria-label="Liste des réalisations">
+    <div class="enveloppe">
+      <div id="fiches-toutes"></div>
+      <noscript>
+        <p class="fiche__statut">
+          Cette liste s'affiche avec JavaScript. Sans JavaScript, la fiche principale reste
+          consultable sur la <a class="lien-externe" href="index.html#realisations">page d'accueil</a>.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Prise de contact">
+    <div class="enveloppe">
+      <p class="suite">
+        <a class="lien-suite" href="index.html#contact">Parler d'un projet</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="section pied">
+  <div class="enveloppe">
+    <p>Aucun cookie, aucune mesure d'audience, aucune ressource tierce sur ce site.</p>
+    <p class="pied__annee" id="pied-annee"></p>
+  </div>
+</footer>
+
+<button class="retour verre" type="button" id="retour" hidden>
+  <span class="retour__fleche" aria-hidden="true"></span>
+  <span class="sr-only">Revenir en haut de la page</span>
+</button>
+
+<script src="js/app.js?v=7"></script>
+</body>
+</html>

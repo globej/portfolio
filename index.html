@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sylvain, développement web sur mesure</title>
+<meta name="description" content="Développeur fullstack en prestation sur mesure : applications métier, sites vitrine, e-commerce, mobile. Une liste de contrôle de livraison, pas des promesses.">
+<meta name="theme-color" content="#EEF1EF" id="couleur-theme">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sylvain, développement web sur mesure">
+<meta property="og:description" content="Applications métier, sites vitrine, e-commerce, mobile. Un projet est fini quand vous pouvez le reprendre sans moi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E45'/%3E%3Cpath d='M8 16.5 L13.5 22 L24 10' fill='none' stroke='%23EEF1EF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<script>
+/* Pose le thème choisi avant le premier rendu, sinon éclair de couleur au rechargement */
+(function () {
+  try {
+    if (localStorage.getItem('portfolio-theme') === 'sombre') {
+      document.documentElement.dataset.theme = 'sombre';
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<div class="barre">
+  <nav class="capsule verre" id="capsule" aria-label="Navigation principale">
+    <a class="capsule__nom" href="#accueil">Sylvain</a>
+    <ul class="capsule__liens">
+      <li><a href="#domaines">Domaines</a></li>
+      <li><a href="#offres">Offres</a></li>
+      <li><a href="#engagement">Engagement</a></li>
+      <li><a href="#ia">IA</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="bascule" type="button" id="bascule-theme" aria-pressed="false">
+      <span class="bascule__icone" aria-hidden="true"></span>
+      <span class="sr-only" id="bascule-libelle">Passer en thème sombre</span>
+    </button>
+  </nav>
+</div>
+
+<header class="section accueil" id="accueil">
+  <div class="enveloppe">
+    <p class="surtitre">Développement web sur mesure</p>
+    <h1 class="titre-accueil">
+      Sylvain <span class="a-completer" title="À remplacer par votre nom" aria-label="champ nom à compléter">[Nom]</span>
+    </h1>
+    <p class="these">
+      Je conçois et je développe des applications web, des sites et des boutiques.
+      Un projet est fini quand il est en ligne, sauvegardé, testé sur les cas qui font mal,
+      et que vous pouvez le reprendre sans moi.
+    </p>
+    <p class="accueil__appui">
+      Mon appui d'expérience : <strong>Symfony</strong>, et l'exploitation d'applications
+      conteneurisées sous <strong>Docker Swarm</strong>.
+    </p>
+    <div class="hero-cta">
+      <a class="bouton" href="#contact">Parler d'un projet</a>
+      <a class="lien-suite" href="#offres">Voir les formats de collaboration</a>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="section" id="domaines" aria-labelledby="titre-domaines">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-domaines">Domaines</h2>
+      <p class="chapo">
+        Quatre types de projets. Dans les quatre cas, la même exigence de livraison, décrite plus
+        bas.
+      </p>
+
+      <div class="domaines">
+
+        <article class="domaine">
+          <h3 class="domaine__nom">Application métier</h3>
+          <div class="domaine__blocs">
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">La situation de départ</p>
+              <p>
+                Un tableur partagé, des copier-coller entre trois outils, et personne ne sait
+                quelle version fait foi.
+              </p>
+            </div>
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">Ce que je livre</p>
+              <p>
+                Une application où la donnée est saisie une fois, avec des rôles, un historique
+                des modifications et un export utilisable.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="domaine">
+          <h3 class="domaine__nom">Site vitrine</h3>
+          <div class="domaine__blocs">
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">La situation de départ</p>
+              <p>
+                Un site fait il y a six ans, lent sur mobile, que plus personne dans l'entreprise
+                ne sait modifier.
+              </p>
+            </div>
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">Ce que je livre</p>
+              <p>
+                Un site rapide sur téléphone, dont vous modifiez les textes sans m'appeler, avec
+                les pages légales et le suivi de mise à jour.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="domaine">
+          <h3 class="domaine__nom">E-commerce</h3>
+          <div class="domaine__blocs">
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">La situation de départ</p>
+              <p>
+                Un catalogue qui ne colle pas au stock réel, et des commandes recopiées à la main
+                dans la comptabilité.
+              </p>
+            </div>
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">Ce que je livre</p>
+              <p>
+                Une boutique branchée sur vos stocks et votre facturation, avec un tunnel de
+                commande testé de bout en bout, paiement compris.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="domaine">
+          <h3 class="domaine__nom">Application mobile</h3>
+          <div class="domaine__blocs">
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">La situation de départ</p>
+              <p>
+                Vos équipes sur le terrain saisissent sur papier, et la donnée arrive au bureau
+                le lendemain, quand elle arrive.
+              </p>
+            </div>
+            <div class="domaine__bloc">
+              <p class="domaine__etiquette">Ce que je livre</p>
+              <p>
+                Une application installable qui fonctionne sans réseau et se synchronise quand la
+                connexion revient.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="offres" aria-labelledby="titre-offres">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-offres">Formats de collaboration</h2>
+      <p class="chapo">
+        Trois façons de démarrer, selon où vous en êtes. Pas de tarif à l'affiche : chaque projet a
+        son contexte, je préfère une estimation honnête à un prix qui ne veut rien dire. Vous me
+        décrivez la situation, je vous réponds avec un devis chiffré et les questions qui manquent.
+      </p>
+
+      <div class="offres">
+
+        <article class="offre" aria-labelledby="offre-audit-titre">
+          <p class="offre__public">Pour vous si</p>
+          <h3 class="offre__titre" id="offre-audit-titre">Audit et cadrage</h3>
+          <p class="offre__resume">
+            Vous avez une idée, un cahier des charges ou un système existant, et vous voulez savoir
+            ce que ça coûte vraiment, quels sont les risques, et par où commencer. Je regarde, je
+            pose des questions, je rends un compte-rendu écrit.
+          </p>
+          <div class="offre__livre">
+            <p class="offre__livre-etiquette">Livrable</p>
+            <p>Document synthétique : options, risques, estimation, prochaines étapes. Entretien de restitution inclus.</p>
+          </div>
+          <a class="bouton" href="mailto:bonjour@example.fr?subject=Audit%20et%20cadrage">Demander un devis</a>
+        </article>
+
+        <article class="offre" aria-labelledby="offre-projet-titre">
+          <p class="offre__public">Pour vous si</p>
+          <h3 class="offre__titre" id="offre-projet-titre">Projet livré clés en main</h3>
+          <p class="offre__resume">
+            Vous avez besoin d'une application métier, d'un site vitrine, d'une boutique ou d'une
+            application mobile. Je conçois, je développe, je mets en ligne, je documente. Le tout
+            avec la liste de contrôle décrite plus bas.
+          </p>
+          <div class="offre__livre">
+            <p class="offre__livre-etiquette">Livrable</p>
+            <p>Le service en production, le dépôt de code, la documentation d'exploitation et tous les accès à votre nom.</p>
+          </div>
+          <a class="bouton" href="mailto:bonjour@example.fr?subject=Projet%20cl%C3%A9s%20en%20main">Demander un devis</a>
+        </article>
+
+        <article class="offre" aria-labelledby="offre-relecture-titre">
+          <p class="offre__public">Pour vous si</p>
+          <h3 class="offre__titre" id="offre-relecture-titre">Relecture d'automatisation IA</h3>
+          <p class="offre__resume">
+            Vous avez déjà un scénario ou une application montée avec des outils d'IA. Je la relis
+            avec la même liste de contrôle que le reste de cette page, et je rends les corrections
+            par ordre de gravité, en séparant ce qui peut attendre et ce qui ne peut pas.
+          </p>
+          <div class="offre__livre">
+            <p class="offre__livre-etiquette">Livrable</p>
+            <p>Rapport priorisé par risque, avec correctifs proposés et, si le code est accessible, les pull-requests correspondantes.</p>
+          </div>
+          <a class="bouton" href="mailto:bonjour@example.fr?subject=Relecture%20d%27automatisation%20IA">Demander un devis</a>
+        </article>
+
+      </div>
+
+      <p class="suite">
+        <a class="lien-suite" href="#contact">Décrire votre contexte</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="engagement" aria-labelledby="titre-engagement">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-engagement">Ce que je m'engage à livrer</h2>
+      <p class="chapo">
+        « Fini » est un mot qui se vérifie. Trois piliers valent pour tous les projets, quel que
+        soit leur type. La liste de contrôle complète, avec les 14 points, se lit sur une page
+        dédiée.
+      </p>
+
+      <div class="piliers">
+        <article class="pilier">
+          <h3 class="pilier__titre">En ligne, sauvegardé, restauré pour de vrai</h3>
+          <p>
+            Le service tourne, il est surveillé, et une sauvegarde a déjà été restaurée sur un
+            environnement propre, pas seulement programmée.
+          </p>
+        </article>
+        <article class="pilier">
+          <h3 class="pilier__titre">Testé sur les cas qui font mal</h3>
+          <p>
+            Le parcours principal est testé de bout en bout, y compris ce qui casse : entrée
+            invalide, réseau qui tombe, deux personnes qui écrivent en même temps.
+          </p>
+        </article>
+        <article class="pilier">
+          <h3 class="pilier__titre">Transférable, sans dépendance à moi</h3>
+          <p>
+            Vous repartez avec le dépôt, la documentation d'exploitation et tous les accès. Vous me
+            rappelez si vous le voulez, pas parce qu'il le faut.
+          </p>
+        </article>
+      </div>
+
+      <p class="suite">
+        <a class="lien-suite" href="engagement.html">Lire la liste de contrôle complète (14 points)</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="ia" aria-labelledby="titre-ia">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-ia">L'IA, et ce qu'elle ne fait pas</h2>
+      <p class="these these--secondaire">
+        J'utilise ces outils tous les jours et ils écrivent du code vite. Ils ne savent pas si ce
+        code est sûr, et ils ne répondront pas à votre place le jour où votre base de données se
+        retrouve accessible depuis l'extérieur.
+      </p>
+      <p>
+        Le problème n'est pas l'outil, et ce n'est pas non plus la personne qui s'en sert. C'est que
+        la responsabilité, elle, ne se génère pas : elle reste sur l'entreprise qui exploite le
+        service. Voici ce que je retrouve le plus souvent dans une automatisation montée vite.
+      </p>
+
+      <ul class="vigilances">
+        <li>Une clé d'API écrite en dur dans un scénario ou poussée dans un dépôt, visible de tous ceux qui y ont accès.</li>
+        <li>Un formulaire dont les contrôles n'existent que dans le navigateur, donc contournables en trente secondes.</li>
+        <li>Des données clients qui traversent trois services tiers, sans contrat de sous-traitance ni base légale.</li>
+        <li>Une dépendance suggérée par un modèle qui n'existe pas, ou qui existe et a été publiée exprès.</li>
+        <li>Un jeton doté de tous les droits parce que restreindre les permissions prenait plus de temps.</li>
+        <li>Une sauvegarde qui tourne depuis des mois et que personne n'a jamais essayé de restaurer.</li>
+      </ul>
+
+      <p>
+        La compétence technique élémentaire n'a pas disparu, elle s'est déplacée. Il faut savoir lire
+        ce que la machine produit, savoir ce qu'une requête coûte, savoir où une donnée est stockée
+        et qui peut la lire. C'est ce que j'apporte quand j'utilise ces outils, et c'est ce qui
+        manque quand une automatisation part en production sans relecture.
+      </p>
+
+      <p class="suite">
+        <a class="lien-suite" href="#offres">Relire une automatisation existante</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="experience" aria-labelledby="titre-experience">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-experience">Appui d'expérience</h2>
+      <p class="chapo">
+        L'essentiel de mon expérience est en <strong>Symfony</strong>, avec des applications
+        conteneurisées et exploitées sous <strong>Docker Swarm</strong>. Ce n'est pas ce que je
+        vends, c'est ce qui fait que le livrable tient une fois que je suis parti.
+      </p>
+
+      <ol class="chaine" aria-label="Trajet d'une requête jusqu'à l'application">
+        <li>navigateur</li>
+        <li>proxy</li>
+        <li>application, en trois exemplaires</li>
+        <li>base de données</li>
+        <li>sauvegarde</li>
+      </ol>
+
+      <p>
+        Concrètement : l'application tourne en plusieurs exemplaires derrière un proxy, une mise à
+        jour les remplace un par un, et le service ne s'arrête pas pendant ce temps. Si vous avez
+        déjà un hébergeur ou une équipe infrastructure, je m'adapte à ce qui existe plutôt que
+        d'imposer ma pile.
+      </p>
+
+      <dl class="fiche__releve fiche__releve--experience">
+        <div><dt>Principal</dt><dd>PHP, Symfony, Doctrine</dd></div>
+        <div><dt>Exploitation</dt><dd>Docker, Docker Swarm, proxy, sauvegardes</dd></div>
+        <div><dt>Front</dt><dd>JavaScript natif, HTML et CSS accessibles</dd></div>
+        <div><dt>Expérience</dt><dd><span class="a-completer" aria-label="nombre d'années à compléter">[X années]</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="realisations" aria-labelledby="titre-realisations">
+    <div class="enveloppe">
+      <h2 class="titre-section" id="titre-realisations">Réalisations</h2>
+      <p class="chapo">
+        Un aperçu. La liste complète, avec les projets plus anciens, se lit sur une page dédiée.
+      </p>
+
+      <div id="fiches-vedettes">
+        <article class="fiche">
+          <h3 class="fiche__titre">Recettes, planning et batch cooking</h3>
+          <p class="fiche__resume">
+            Application de cuisine qui fonctionne entièrement hors ligne : recettes, planning
+            hebdomadaire, liste de courses agrégée par rayon, et ordonnancement d'une session de
+            batch cooking sur les contraintes réelles de four, de plaques et de place au frigo.
+          </p>
+          <dl class="fiche__releve">
+            <div><dt>Rôle</dt><dd>Conception et développement</dd></div>
+            <div><dt>Période</dt><dd>2024 à aujourd'hui</dd></div>
+            <div><dt>Stack</dt><dd>JS natif, IndexedDB, service worker, OAuth2</dd></div>
+            <div><dt>Dépendances</dt><dd>0, aucune étape de build</dd></div>
+          </dl>
+          <p>
+            <a class="lien-externe" href="https://nutrievidence.fr/recettes/" rel="noopener">Voir l'application</a>
+          </p>
+        </article>
+      </div>
+
+      <p class="suite">
+        <a class="lien-suite" href="realisations.html">Voir toutes les réalisations</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="titre-contact">
+    <div class="enveloppe">
+      <div class="carte-contact verre">
+        <h2 class="titre-section" id="titre-contact">Parlons de votre projet</h2>
+        <p>
+          Décrivez le contexte, l'échéance et ce qui existe déjà. Je réponds avec une estimation et
+          les questions qui manquent.
+        </p>
+        <p class="contact-adresse">
+          <a class="lien-contact" href="mailto:bonjour@example.fr">bonjour@example.fr</a>
+          <a class="bouton" href="mailto:bonjour@example.fr?subject=Projet%20%C3%A0%20discuter">Écrire un mail</a>
+          <button class="bouton bouton--secondaire" type="button" id="copier-email" data-email="bonjour@example.fr">Copier l'adresse</button>
+        </p>
+        <p class="statut-copie" id="statut-copie" role="status"></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="section pied">
+  <div class="enveloppe">
+    <p>Aucun cookie, aucune mesure d'audience, aucune ressource tierce sur ce site.</p>
+    <p class="pied__annee" id="pied-annee"></p>
+  </div>
+</footer>
+
+<button class="retour verre" type="button" id="retour" hidden>
+  <span class="retour__fleche" aria-hidden="true"></span>
+  <span class="sr-only">Revenir en haut de la page</span>
+</button>
+
+<script src="js/app.js?v=7"></script>
+</body>
+</html>

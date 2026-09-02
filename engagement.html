@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Engagement, Sylvain, développement web sur mesure</title>
+<meta name="description" content="Liste de contrôle de livraison : les 14 points que je tiens avant de vous rendre un projet, tous domaines confondus.">
+<meta name="theme-color" content="#EEF1EF" id="couleur-theme">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Engagement, Sylvain, développement web sur mesure">
+<meta property="og:description" content="Les 14 points de la liste de contrôle de livraison, filtrables par domaine.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E45'/%3E%3Cpath d='M8 16.5 L13.5 22 L24 10' fill='none' stroke='%23EEF1EF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css?v=11">
+<script>
+/* Pose le thème choisi avant le premier rendu, sinon éclair de couleur au rechargement */
+(function () {
+  try {
+    if (localStorage.getItem('portfolio-theme') === 'sombre') {
+      document.documentElement.dataset.theme = 'sombre';
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<!-- Nav dupliquée depuis index.html : si tu la modifies ici, répercuter là-bas. -->
+<div class="barre">
+  <nav class="capsule verre" id="capsule" aria-label="Navigation principale">
+    <a class="capsule__nom" href="index.html">Sylvain</a>
+    <ul class="capsule__liens">
+      <li><a href="index.html#domaines">Domaines</a></li>
+      <li><a href="index.html#offres">Offres</a></li>
+      <li><a href="engagement.html" aria-current="page">Engagement</a></li>
+      <li><a href="index.html#ia">IA</a></li>
+      <li><a href="index.html#experience">Expérience</a></li>
+      <li><a href="realisations.html">Réalisations</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="bascule" type="button" id="bascule-theme" aria-pressed="false">
+      <span class="bascule__icone" aria-hidden="true"></span>
+      <span class="sr-only" id="bascule-libelle">Passer en thème sombre</span>
+    </button>
+  </nav>
+</div>
+
+<header class="section" id="engagement-page" aria-labelledby="titre-engagement">
+  <div class="enveloppe">
+    <p class="surtitre">Engagement</p>
+    <h1 class="titre-section" id="titre-engagement">Liste de contrôle de livraison</h1>
+    <p class="these">
+      « Fini » est un mot qui se vérifie. Voici les points que je tiens avant de vous rendre un
+      projet, quel que soit son type. Filtrez par domaine pour voir ceux qui vous concernent.
+    </p>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="section" aria-label="Points de contrôle">
+    <div class="enveloppe">
+
+      <div class="filtre" id="filtre">
+        <div class="filtre__capsule verre">
+          <div class="filtre__segments" role="group" aria-label="Filtrer par domaine">
+            <button type="button" class="segment" data-domaine="tous" aria-pressed="true" aria-controls="controles">Tous</button>
+            <button type="button" class="segment" data-domaine="metier" aria-pressed="false" aria-controls="controles">Métier</button>
+            <button type="button" class="segment" data-domaine="vitrine" aria-pressed="false" aria-controls="controles">Vitrine</button>
+            <button type="button" class="segment" data-domaine="ecommerce" aria-pressed="false" aria-controls="controles">E-commerce</button>
+            <button type="button" class="segment" data-domaine="mobile" aria-pressed="false" aria-controls="controles">Mobile</button>
+            <button type="button" class="segment" data-domaine="ia" aria-pressed="false" aria-controls="controles">IA</button>
+          </div>
+          <p class="filtre__decompte" id="decompte" role="status">14 points, tous domaines confondus.</p>
+        </div>
+      </div>
+
+      <ul class="controles" id="controles">
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Les entrées sont validées côté serveur, pas seulement dans le navigateur.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Aucun secret dans le dépôt, et une clé peut être changée sans redéployer le code.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="metier ecommerce ia">
+          <p class="point__texte">Une sauvegarde a été restaurée pour de vrai, sur un environnement propre, pas seulement programmée.</p>
+          <p class="point__domaines">Métier, e-commerce, IA</p>
+        </li>
+        <li class="point" data-domaines="metier ecommerce ia">
+          <p class="point__texte">Les accès sont nominatifs et limités au strict nécessaire, y compris les miens.</p>
+          <p class="point__domaines">Métier, e-commerce, IA</p>
+        </li>
+        <li class="point" data-domaines="vitrine ecommerce mobile">
+          <p class="point__texte">Les temps de chargement sont mesurés sur un vrai téléphone, pas estimés au ressenti.</p>
+          <p class="point__domaines">Vitrine, e-commerce, mobile</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile">
+          <p class="point__texte">Le parcours principal est utilisable au clavier et lisible par un lecteur d'écran.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Chaque donnée personnelle collectée a une raison d'être et une durée de conservation écrite.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Les dépendances sont épinglées, à jour, et je peux dire pourquoi chacune est là.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce">
+          <p class="point__texte">La mise à jour se fait sans coupure visible, et le retour en arrière est possible.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce</p>
+        </li>
+        <li class="point" data-domaines="metier ecommerce mobile ia">
+          <p class="point__texte">Les erreurs sont journalisées et remontées, jamais avalées en silence.</p>
+          <p class="point__domaines">Métier, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="ecommerce">
+          <p class="point__texte">Le tunnel de commande est testé de bout en bout, paiement et remboursement compris.</p>
+          <p class="point__domaines">E-commerce</p>
+        </li>
+        <li class="point" data-domaines="mobile">
+          <p class="point__texte">Le comportement hors réseau est prévu et testé, y compris le conflit de synchronisation.</p>
+          <p class="point__domaines">Mobile</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Ce qu'un outil a généré est relu ligne à ligne avant d'aller en production.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+        <li class="point" data-domaines="metier vitrine ecommerce mobile ia">
+          <p class="point__texte">Vous repartez avec le dépôt, la documentation d'exploitation et tous les accès.</p>
+          <p class="point__domaines">Métier, vitrine, e-commerce, mobile, IA</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-label="Prise de contact">
+    <div class="enveloppe">
+      <p class="suite">
+        <a class="lien-suite" href="index.html#contact">Parler d'un projet</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="section pied">
+  <div class="enveloppe">
+    <p>Aucun cookie, aucune mesure d'audience, aucune ressource tierce sur ce site.</p>
+    <p class="pied__annee" id="pied-annee"></p>
+  </div>
+</footer>
+
+<button class="retour verre" type="button" id="retour" hidden>
+  <span class="retour__fleche" aria-hidden="true"></span>
+  <span class="sr-only">Revenir en haut de la page</span>
+</button>
+
+<script src="js/app.js?v=7"></script>
+</body>
+</html>
