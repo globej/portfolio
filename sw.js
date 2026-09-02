@@ -2,15 +2,15 @@
  * Service worker : le site reste consultable hors ligne.
  * Bumper CACHE à chaque modification de index.html, css/*.css ou js/*.js.
  */
-const CACHE = 'portfolio-v13';
+const CACHE = 'portfolio-v14';
 
 const SHELL_CRITICAL = [
   './',
   'index.html',
   'realisations.html',
   'engagement.html',
-  'css/styles.css?v=11',
-  'js/app.js?v=7'
+  'css/styles.css?v=12',
+  'js/app.js?v=8'
 ];
 
 self.addEventListener('install', (evt) => {

@@ -10,7 +10,7 @@
 <meta property="og:title" content="Réalisations, Sylvain, développement web sur mesure">
 <meta property="og:description" content="Liste des projets menés : contexte, rôle, période, stack et livrables.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E45'/%3E%3Cpath d='M8 16.5 L13.5 22 L24 10' fill='none' stroke='%23EEF1EF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/styles.css?v=12">
 <script>
 /* Pose le thème choisi avant le premier rendu, sinon éclair de couleur au rechargement */
 (function () {
@@ -61,6 +61,23 @@
 
   <section class="section" aria-label="Liste des réalisations">
     <div class="enveloppe">
+
+      <!-- Masqué par défaut : sans JavaScript la liste est vide, un filtre n'aurait
+           rien à filtrer. filtrerFiches() le révèle une fois les fiches injectées. -->
+      <div class="filtre" id="filtre-fiches" hidden>
+        <div class="filtre__capsule verre">
+          <div class="filtre__segments" role="group" aria-label="Filtrer les réalisations par domaine">
+            <button type="button" class="segment" data-domaine="tous" aria-pressed="true" aria-controls="fiches-toutes">Tous</button>
+            <button type="button" class="segment" data-domaine="metier" aria-pressed="false" aria-controls="fiches-toutes">Métier</button>
+            <button type="button" class="segment" data-domaine="vitrine" aria-pressed="false" aria-controls="fiches-toutes">Vitrine</button>
+            <button type="button" class="segment" data-domaine="ecommerce" aria-pressed="false" aria-controls="fiches-toutes">E-commerce</button>
+            <button type="button" class="segment" data-domaine="mobile" aria-pressed="false" aria-controls="fiches-toutes">Mobile</button>
+            <button type="button" class="segment" data-domaine="ia" aria-pressed="false" aria-controls="fiches-toutes">IA</button>
+          </div>
+          <p class="filtre__decompte" id="decompte-fiches" role="status">11 réalisations, tous domaines confondus.</p>
+        </div>
+      </div>
+
       <div id="fiches-toutes"></div>
       <noscript>
         <p class="fiche__statut">
@@ -93,6 +110,6 @@
   <span class="sr-only">Revenir en haut de la page</span>
 </button>
 
-<script src="js/app.js?v=7"></script>
+<script src="js/app.js?v=8"></script>
 </body>
 </html>
