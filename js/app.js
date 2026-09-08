@@ -23,57 +23,211 @@ const App = (() => {
      Ajouter un projet ici, il apparaît partout où il doit apparaître.
      Champs : id, titre, resume, role, periode, stack, dependances (ou resultat),
      detail (paragraphe libre affiché après le relevé), lien {href, libelle},
-     domaines[] (pour filtres futurs), vedette (bool, apparaît sur la home),
-     ordre (nombre, tri du plus grand au plus petit), statut ('brouillon' ou null). */
+     domaines[] (alimente le filtre de realisations.html), vedette (bool, apparaît
+     sur la home), ordre (nombre, tri du plus grand au plus petit). */
 
   const PROJETS = [
     {
-      id: 'recettes',
-      ordre: 2024,
+      id: 'faitou',
+      ordre: 110,
       vedette: true,
-      titre: 'Recettes, planning et batch cooking',
+      titre: 'Faitou, carnet de recettes et batch cooking',
       resume:
         "Application de cuisine qui fonctionne entièrement hors ligne : recettes, planning " +
         "hebdomadaire, liste de courses agrégée par rayon, et ordonnancement d'une session de " +
         "batch cooking sur les contraintes réelles de four, de plaques et de place au frigo.",
       role: 'Conception et développement',
       periode: "2024 à aujourd'hui",
-      stack: 'JS natif, IndexedDB, service worker, OAuth2',
-      dependances: '0, aucune étape de build',
+      stack: 'JS natif, IndexedDB, service worker, Supabase (Postgres, RLS, Realtime)',
+      dependances: '1 SDK auto-hébergé, aucune étape de build',
       detail:
-        "Les données vivent sur l'appareil. La synchronisation vers Google Drive est optionnelle " +
-        "et réconcilie les deux côtés au lieu d'écraser. Rien de tiers ne se charge avant le " +
-        "consentement : polices auto-hébergées, aucun SDK au démarrage.",
-      lien: { href: 'https://nutrievidence.fr/recettes/', libelle: "Voir l'application" },
+        "L'ordonnanceur sépare le temps de travail actif du temps de cuisson pour combler les " +
+        "attentes, puis répartit les plats entre frigo et congélateur. Les données vivent sur " +
+        "l'appareil, le compte et la synchronisation restent optionnels, et la politique de " +
+        "sécurité interdit tout script écrit dans la page.",
+      lien: { href: 'https://faitou.fr/', libelle: "Voir l'application" },
+      domaines: ['metier', 'mobile']
+    },
+    {
+      id: 'dataclean-x',
+      ordre: 100,
+      vedette: true,
+      titre: 'DataClean-X, mise en conformité Factur-X de catalogues',
+      resume:
+        "Les catalogues produits arrivent en CSV ou en Excel, avec des unités, des prix et des " +
+        "taux de TVA écrits de vingt façons. L'application les rattache aux champs Factur-X, " +
+        "les normalise, signale les lignes invalides et les réexporte.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: 'Next.js 15, Supabase, Stripe, AG Grid',
+      resultat: 'API REST publique, 5 000 lignes par requête, 60 requêtes par minute et par clé',
+      detail:
+        "Les modèles de correspondance de colonnes se réutilisent d'un fichier à l'autre. La " +
+        "correction des lignes en erreur peut passer par un modèle de langage hébergé en " +
+        "Europe, en option. La purge des données de fichiers est planifiée côté base.",
+      domaines: ['metier', 'ecommerce', 'ia']
+    },
+    {
+      id: 'sobre',
+      ordre: 90,
+      vedette: true,
+      titre: 'Sobre, lanceur Android',
+      resume:
+        "Lanceur Android orienté texte qui pose une friction volontaire devant les applications " +
+        "qu'on ouvre par réflexe : quota de session à choisir, intention à écrire avant " +
+        "l'ouverture, pause respiratoire quand le quota est épuisé.",
+      role: 'Conception et développement',
+      periode: '2026, en cours',
+      stack: 'Kotlin, Jetpack Compose, Hilt, Room, DataStore',
+      resultat: "Tout reste sur l'appareil, aucun SDK de mesure",
+      detail:
+        "Le blocage de sites lit la barre d'adresse du navigateur par le service " +
+        "d'accessibilité : pas de VPN, pas de proxy DNS, aucun serveur. Les statistiques de " +
+        "temps d'écran sont factuelles, sans objectif imposé ni jugement.",
+      domaines: ['mobile']
+    },
+    {
+      id: 'nutrievidence',
+      ordre: 80,
+      vedette: false,
+      titre: 'Nutrievidence, application bilingue',
+      resume:
+        "Application web en français et en anglais, adossée à une base Postgres où chaque table " +
+        "porte ses propres règles d'accès. Le schéma vit dans des migrations versionnées, " +
+        "rejouables à l'identique en local et en production.",
+      role: 'Conception et développement',
+      periode: '2026, en cours',
+      stack: 'Next.js (App Router), Supabase, next-intl, Vercel',
+      resultat: 'Environnement de développement complet en une commande',
       domaines: ['metier', 'vitrine']
     },
     {
-      id: 'brouillon-1',
-      ordre: 0,
-      vedette: true,
-      statut: 'brouillon',
-      titre: '[Nom du projet]',
+      id: 'moniteur-laitier',
+      ordre: 70,
+      vedette: false,
+      titre: 'Moniteur du marché laitier européen',
       resume:
-        "[Deux phrases : le problème concret du client, et ce que l'application fait pour le " +
-        "résoudre. Pas d'adjectif, un chiffre si possible.]",
-      role: '[votre rôle]',
-      periode: '[année]',
-      stack: '[technologies]',
-      resultat: '[mesure vérifiable]'
+        "Tableau de bord qui rassemble au même endroit les prix des produits laitiers, le prix " +
+        "du lait cru payé aux producteurs, les volumes de collecte, les contrats à terme et " +
+        "l'actualité de la filière.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: 'Node.js, Express, Chart.js',
+      resultat: 'Sept sources agrégées, prix ramenés à une unité commune',
+      detail:
+        "Les sources publiques n'autorisent pas l'appel direct depuis le navigateur et ne " +
+        "garantissent aucune disponibilité. Un cache à durée de vie, écrit sur disque, sert la " +
+        "dernière version connue en la signalant comme périmée, plutôt qu'une page vide quand " +
+        "une source tombe.",
+      domaines: ['metier']
     },
     {
-      id: 'brouillon-2',
-      ordre: -1,
+      id: 'serviprospect',
+      ordre: 60,
       vedette: false,
-      statut: 'brouillon',
-      titre: '[Nom du projet]',
+      titre: "ServiProspect, recherche d'entreprises",
       resume:
-        "[Choisir un projet qui montre une compétence absente de la fiche précédente : " +
-        "volumétrie, temps réel, reprise d'un système existant.]",
-      role: '[votre rôle]',
-      periode: '[année]',
-      stack: '[technologies]',
-      resultat: '[mesure vérifiable]'
+        "Outil de prospection qui interroge la base SIRENE par l'API publique de l'État : " +
+        "recherche libre, filtres par code NAF, commune, département, effectif et forme " +
+        "juridique, puis export de la sélection.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: "JS natif, API Recherche d'entreprises",
+      dependances: '3 fichiers, aucune étape de build',
+      detail:
+        "Deux aides de saisie évitent d'avoir à connaître la nomenclature : la recherche d'un " +
+        "code NAF à partir de mots d'activité, et l'autocomplétion des codes postaux. L'export " +
+        "sort en CSV ou dans un format directement importable dans Notion.",
+      domaines: ['metier']
+    },
+    {
+      id: 'servibeurre',
+      ordre: 50,
+      vedette: false,
+      titre: 'Servibeurre, site vitrine',
+      resume:
+        "Site d'un négoce de beurre : présentation, fiche produit, fil d'actualités et " +
+        "formulaire de contact. Pages statiques, en-têtes de sécurité posés au niveau du " +
+        "serveur, mise en ligne comprise.",
+      role: 'Conception, développement et mise en ligne',
+      periode: '2025 à 2026',
+      stack: 'HTML, CSS, JS, esbuild, PHP pour le formulaire',
+      resultat: 'Plan de site, robots.txt et balises de partage en place',
+      lien: { href: 'https://servibeurre.fr/', libelle: 'Voir le site' },
+      domaines: ['vitrine']
+    },
+    {
+      id: 'marie-nawrot',
+      ordre: 40,
+      vedette: false,
+      titre: 'Marie Nawrot, assistante virtuelle',
+      resume:
+        "Site vitrine de douze pages pour une assistante indépendante spécialisée dans " +
+        "l'immobilier. Quatre offres, un questionnaire qui oriente vers la bonne, un " +
+        "calculateur de temps et de coût, un comparateur d'abonnements.",
+      role: 'Direction artistique et développement',
+      periode: '2026',
+      stack: 'HTML, CSS, JS natif, données structurées JSON-LD',
+      dependances: '0, aucune étape de build',
+      detail:
+        "Bascule clair et sombre mémorisée, sans éclair de couleur au chargement. La " +
+        "préférence de mouvement réduit neutralise l'ensemble des animations, bandeau " +
+        "défilant et révélations au défilement compris.",
+      domaines: ['vitrine']
+    },
+    {
+      id: 'concretedev',
+      ordre: 30,
+      vedette: false,
+      titre: 'ConcreteDev, site vitrine et études de cas',
+      resume:
+        "Site de treize pages avec six études de cas, ciblage géographique, balisage structuré " +
+        "complet et formulaire sans serveur applicatif. Livré comme une trame documentée dont " +
+        "les contenus de projets restent à remplacer par des cas réels.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: 'HTML, CSS, JS natif, polices auto-hébergées',
+      dependances: '0, aucune étape de build',
+      domaines: ['vitrine']
+    },
+    {
+      id: 'degusto',
+      ordre: 20,
+      vedette: false,
+      titre: 'Dégusto, carnet de dégustation',
+      resume:
+        "Carnet de dégustation installable, utilisable hors ligne. L'intérêt n'est pas le " +
+        "formulaire mais son moteur : les catégories, les types de champs et l'affichage des " +
+        "fiches sont décrits par des schémas, pas écrits un par un.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: 'Modules ES natifs, IndexedDB, service worker, OAuth2',
+      dependances: '0, aucune étape de build',
+      detail:
+        "Ajouter une catégorie revient à décrire ses champs, sans écrire de vue. Les photos " +
+        "sont redimensionnées dans le navigateur, et la sauvegarde va dans l'espace applicatif " +
+        "privé du compte Drive de la personne, jamais sur un serveur intermédiaire.",
+      domaines: ['mobile', 'metier']
+    },
+    {
+      id: 'library-save-merger',
+      ordre: 10,
+      vedette: false,
+      titre: 'Fusion de sauvegardes JW Library',
+      resume:
+        "Deux appareils, deux sauvegardes, des notes et des surlignages qui divergent. L'outil " +
+        "ouvre les deux archives, fusionne les bases SQLite qu'elles contiennent et laisse " +
+        "choisir la résolution pour chaque type de conflit, au lieu de garder la plus récente " +
+        "et de perdre le reste.",
+      role: 'Conception et développement',
+      periode: '2026',
+      stack: 'JS natif, JSZip, sql.js en WebAssembly',
+      dependances: "0, aucun fichier n'est envoyé à un serveur",
+      detail:
+        "Tout le traitement a lieu dans le navigateur : décompression de l'archive, lecture de " +
+        "la base, fusion signet par signet et note par note, puis recompression. Interface en " +
+        "français et en anglais.",
+      domaines: ['metier']
     }
   ];
 
@@ -109,11 +263,13 @@ const App = (() => {
     };
 
     const fiche = (projet) => {
-      const brouillon = projet.statut === 'brouillon';
       const parties = [];
 
-      parties.push('<article class="fiche' + (brouillon ? ' fiche--brouillon' : '') + '">');
-      if (brouillon) parties.push('<p class="fiche__statut">Fiche à compléter</p>');
+      parties.push(
+        '<article class="fiche" data-domaines="' +
+          echapper((projet.domaines || []).join(' ')) +
+          '">'
+      );
       parties.push('<h3 class="fiche__titre">' + echapper(projet.titre) + '</h3>');
       parties.push('<p class="fiche__resume">' + echapper(projet.resume) + '</p>');
       parties.push(releve(projet));
@@ -150,6 +306,67 @@ const App = (() => {
         PROJETS.slice().sort((a, b) => (b.ordre || 0) - (a.ordre || 0))
       );
     }
+  }
+
+  /* Filtre des fiches par domaine (page Réalisations) ----------------------- */
+
+  function filtrerFiches() {
+    const groupe = $('filtre-fiches');
+    const liste = $('fiches-toutes');
+    const decompte = $('decompte-fiches');
+    if (!groupe || !liste || !decompte) return;
+
+    const segments = $$('#filtre-fiches .segment');
+    const fiches = $$('#fiches-toutes .fiche');
+    const total = fiches.length;
+    if (!total) return;
+
+    groupe.hidden = false;
+
+    /* Message d'état vide : posé une fois, montré seulement quand rien ne reste */
+    const vide = document.createElement('p');
+    vide.className = 'fiche__statut';
+    vide.hidden = true;
+    liste.appendChild(vide);
+
+    const appliquer = (domaine) => {
+      let retenus = 0;
+
+      fiches.forEach((fiche) => {
+        const domaines = (fiche.dataset.domaines || '').split(' ');
+        const dedans = domaine === 'tous' || domaines.indexOf(domaine) !== -1;
+        fiche.hidden = !dedans;
+        if (dedans) retenus += 1;
+      });
+
+      segments.forEach((segment) => {
+        segment.setAttribute('aria-pressed', String(segment.dataset.domaine === domaine));
+      });
+
+      vide.hidden = retenus !== 0;
+      if (retenus === 0) {
+        vide.textContent =
+          'Aucune réalisation ne concerne ' + LIBELLES[domaine] +
+          '. Choisissez Tous pour revenir à la liste.';
+      }
+
+      if (domaine === 'tous') {
+        decompte.textContent = total + ' réalisations, tous domaines confondus.';
+      } else if (retenus === 0) {
+        decompte.textContent = 'Aucune réalisation ne concerne ce domaine.';
+      } else if (retenus === 1) {
+        decompte.textContent = '1 réalisation sur ' + total + ' concerne ' + LIBELLES[domaine] + '.';
+      } else {
+        decompte.textContent =
+          retenus + ' réalisations sur ' + total + ' concernent ' + LIBELLES[domaine] + '.';
+      }
+    };
+
+    segments.forEach((segment) => {
+      segment.addEventListener('click', () => appliquer(segment.dataset.domaine));
+    });
+
+    appliquer('tous');
   }
 
   /* Thème : clair par défaut, sombre au choix, mémorisé par appareil -------- */
@@ -388,6 +605,7 @@ const App = (() => {
   function init() {
     basculerTheme();
     injecterFiches();
+    filtrerFiches();
     filtrerControles();
     refletSpeculaire();
     suivreDefilement();

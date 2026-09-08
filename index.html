@@ -10,7 +10,7 @@
 <meta property="og:title" content="Sylvain, développement web sur mesure">
 <meta property="og:description" content="Applications métier, sites vitrine, e-commerce, mobile. Un projet est fini quand vous pouvez le reprendre sans moi.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E5E45'/%3E%3Cpath d='M8 16.5 L13.5 22 L24 10' fill='none' stroke='%23EEF1EF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/styles.css?v=12">
 <script>
 /* Pose le thème choisi avant le premier rendu, sinon éclair de couleur au rechargement */
 (function () {
@@ -343,8 +343,8 @@
       </p>
 
       <div id="fiches-vedettes">
-        <article class="fiche">
-          <h3 class="fiche__titre">Recettes, planning et batch cooking</h3>
+        <article class="fiche" data-domaines="metier mobile">
+          <h3 class="fiche__titre">Faitou, carnet de recettes et batch cooking</h3>
           <p class="fiche__resume">
             Application de cuisine qui fonctionne entièrement hors ligne : recettes, planning
             hebdomadaire, liste de courses agrégée par rayon, et ordonnancement d'une session de
@@ -353,11 +353,11 @@
           <dl class="fiche__releve">
             <div><dt>Rôle</dt><dd>Conception et développement</dd></div>
             <div><dt>Période</dt><dd>2024 à aujourd'hui</dd></div>
-            <div><dt>Stack</dt><dd>JS natif, IndexedDB, service worker, OAuth2</dd></div>
-            <div><dt>Dépendances</dt><dd>0, aucune étape de build</dd></div>
+            <div><dt>Stack</dt><dd>JS natif, IndexedDB, service worker, Supabase (Postgres, RLS, Realtime)</dd></div>
+            <div><dt>Dépendances</dt><dd>1 SDK auto-hébergé, aucune étape de build</dd></div>
           </dl>
           <p>
-            <a class="lien-externe" href="https://nutrievidence.fr/recettes/" rel="noopener">Voir l'application</a>
+            <a class="lien-externe" href="https://faitou.fr/" rel="noopener">Voir l'application</a>
           </p>
         </article>
       </div>
@@ -400,6 +400,6 @@
   <span class="sr-only">Revenir en haut de la page</span>
 </button>
 
-<script src="js/app.js?v=7"></script>
+<script src="js/app.js?v=8"></script>
 </body>
 </html>

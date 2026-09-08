@@ -926,15 +926,6 @@ a:hover { color: var(--controle); }
   margin-block-end: var(--e-1);
 }
 
-.fiche--brouillon {
-  padding-inline-start: var(--e-2);
-  border-inline-start: 2px dashed var(--vigilance);
-}
-
-.fiche--brouillon .fiche__titre,
-.fiche--brouillon .fiche__resume,
-.fiche--brouillon .fiche__releve dd { color: var(--texte-second); }
-
 .carte-contact {
   padding: var(--e-4);
   border-radius: var(--r-panneau);
