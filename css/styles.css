@@ -67,6 +67,7 @@
   --rythme: clamp(4rem, 9vw, 7rem);
   --gap-bloc: var(--e-3);
   --rail-icone: 1.5rem;
+  --rail-annee: 8.5rem;   /* colonne des dates de la frise de parcours */
 
   /* Alignement : un axe à gauche, deux repères à droite, pas un de plus */
   --colonne: 58rem;   /* repère R, bord de colonne */
@@ -155,7 +156,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-:where(h1, h2, h3, p, ul, ol, dl, figure) { margin: 0; }
+:where(h1, h2, h3, h4, p, ul, ol, dl, figure) { margin: 0; }
 :where(ul, ol) { padding: 0; list-style: none; }
 
 .sr-only {
@@ -857,7 +858,8 @@ a:hover { color: var(--controle); }
   margin-block: var(--gap-bloc);
 }
 
-.chaine li {
+.chaine li,
+.pastilles li {
   padding: var(--e-0) var(--e-2);
   border: 1px solid var(--filet);
   border-radius: var(--r-pilule);
@@ -865,6 +867,9 @@ a:hover { color: var(--controle); }
   font-family: var(--police-mesure);
   font-size: var(--t-1);
 }
+
+/* La flèche n'appartient qu'à la chaîne : elle affirme une séquence.
+   Une pile technique n'en est pas une, .pastilles ne la porte donc pas. */
 
 .chaine li:not(:last-child)::after {
   content: " \2192";
@@ -926,6 +931,102 @@ a:hover { color: var(--controle); }
   margin-block-end: var(--e-1);
 }
 
+/* 11 bis. Parcours ---------------------------------------------------------- */
+
+/* Une frise, pas des cartes : la chronologie est ici l'information principale.
+   Le rail porte les dates en chasse fixe, comme un relevé daté. */
+
+.parcours__titre {
+  margin-block-start: var(--e-5);
+  margin-block-end: var(--e-2);
+  font-family: var(--police-mesure);
+  font-size: var(--t-0);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texte-second);
+}
+
+.parcours { border-block-start: 1px solid var(--filet); }
+
+.jalon {
+  display: grid;
+  grid-template-columns: var(--rail-annee) minmax(0, 1fr);
+  gap: 0 var(--e-3);
+  padding-block: var(--e-3);
+  border-block-end: 1px solid var(--filet);
+}
+
+.jalon__periode {
+  grid-column: 1;
+  margin: 0;
+  padding-block-start: 0.35em;
+  font-family: var(--police-mesure);
+  font-size: var(--t-0);
+  line-height: 1.5;
+  color: var(--texte-second);
+}
+
+.jalon__periode time { white-space: nowrap; }
+
+/* La durée passe sous les dates : le rail reste étroit et la ligne de dates
+   ne se casse jamais au milieu d'un mois. */
+.jalon__duree { display: block; }
+
+/* Le filet du rail est une bordure du contenu, pas un élément flottant :
+   il suit la hauteur réelle du jalon et disparaît proprement en une colonne. */
+.jalon__corps {
+  grid-column: 2;
+  padding-inline-start: var(--e-3);
+  border-inline-start: 1px solid var(--filet);
+}
+
+.jalon__corps > * { max-width: var(--mesure); }
+
+.jalon__role {
+  font-size: var(--t-4);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.jalon__lieu {
+  margin-block-start: var(--e-0);
+  font-size: var(--t-2);
+  color: var(--texte-second);
+}
+
+.jalon__corps p + p { margin-block-start: var(--e-2); }
+
+.jalon__corps > p:not(.jalon__lieu) { font-size: var(--t-2); }
+
+.pastilles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-1);
+  margin-block-start: var(--e-2);
+}
+
+/* Sous 34rem le rail passerait sous les 6 caractères d'une date :
+   la période remonte au-dessus du rôle et le filet s'efface. */
+@media (max-width: 34rem) {
+  .jalon {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--e-1) 0;
+  }
+
+  .jalon__periode { grid-column: 1; padding-block-start: 0; }
+
+  .jalon__duree { display: inline; }
+
+  .jalon__duree::before { content: ", "; }
+
+  .jalon__corps {
+    grid-column: 1;
+    padding-inline-start: 0;
+    border-inline-start: 0;
+  }
+}
+
 .carte-contact {
   padding: var(--e-4);
   border-radius: var(--r-panneau);
@@ -945,9 +1046,13 @@ a:hover { color: var(--controle); }
 .lien-contact {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   min-height: 44px;
   font-family: var(--police-mesure);
   font-size: var(--t-4);
+  /* Une adresse n'a pas d'espace où se couper : sans ceci elle sort
+     de la carte sous 24rem. */
+  overflow-wrap: anywhere;
 }
 
 .bouton {
