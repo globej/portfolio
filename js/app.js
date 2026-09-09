@@ -28,6 +28,66 @@ const App = (() => {
 
   const PROJETS = [
     {
+      id: 'skoleo',
+      ordre: 130,
+      vedette: true,
+      titre: 'Skoléo, gestion des agents des écoles',
+      resume:
+        "Logiciel interne de la mairie d'Aurillac qui remplace Helix, l'outil de gestion des " +
+        "agents des écoles abandonné par son éditeur en 2015. Il couvre les agents, leur " +
+        "carrière, leurs postes, la planification annuelle du temps de travail et les états " +
+        "d'heures qui servent de base aux contrats et à la paie.",
+      role: 'Analyse des besoins, conception et développement',
+      periode: '2022 à 2024',
+      stack: 'Symfony, Symfony UX Live Components, Doctrine, MySQL, Docker Swarm',
+      resultat: "Remplacement d'un logiciel sans maintenance depuis 2015",
+      detail:
+        "Le cœur du sujet est un moteur de créneaux horaires : une école change de rythme, un " +
+        "agent est remplacé en cours d'année, et chaque écart se retrouve sur une fiche de " +
+        "paie. Le calendrier scolaire, les congés et les jours fériés sont récupérés sur les " +
+        "API de l'État plutôt que saisis à la main. Aucun processus métier n'étant formalisé " +
+        "au départ, ils ont été reconstitués fonctionnalité par fonctionnalité, par entretiens " +
+        "réguliers avec la direction Éducation et la direction des ressources humaines.",
+      domaines: ['metier']
+    },
+    {
+      id: 'resapp',
+      ordre: 120,
+      vedette: false,
+      titre: 'RESAPP, réservation de salles',
+      resume:
+        "Application de réservation des salles de la mairie d'Aurillac : agenda partagé, " +
+        "demandes d'occupation, validation par les services gestionnaires et vue d'ensemble des " +
+        "créneaux par bâtiment.",
+      role: 'Développement, mise en production et exploitation',
+      periode: '2022 à 2023',
+      stack: 'Symfony, Doctrine, MySQL, Azure AD, Docker Swarm',
+      resultat: 'Authentification unique par les comptes de la collectivité',
+      detail:
+        "Première application livrée à la ville, présentée en comité de direction, puis " +
+        "première à être déployée sur l'infrastructure de conteneurs mise en place ensuite : " +
+        "serveur Caddy, certificats renouvelés automatiquement, images construites par un " +
+        "pipeline, environnements de développement et de production séparés.",
+      domaines: ['metier']
+    },
+    {
+      id: 'lacta',
+      ordre: 115,
+      vedette: false,
+      titre: 'Lacta, analyse de marché et renseignement en sources ouvertes',
+      resume:
+        "Outil de veille qui collecte des sources publiques dispersées, les recoupe autour des " +
+        "acteurs et des produits suivis, et restitue l'état d'un marché plutôt qu'une pile de " +
+        "documents à lire.",
+      role: 'Conception et développement',
+      periode: '2026, en cours',
+      stack: 'Vue.js, Supabase (Postgres, RLS)',
+      detail:
+        "Chaque valeur affichée reste rattachée à la source publique dont elle vient : une " +
+        "analyse se vérifie, elle ne se croit pas sur parole.",
+      domaines: ['metier']
+    },
+    {
       id: 'faitou',
       ordre: 110,
       vedette: true,
